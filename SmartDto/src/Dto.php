@@ -1,5 +1,5 @@
 <?php
-namespace SmartDto;
+namespace Nubersoft\SmartDto;
 
 class Dto
 {
