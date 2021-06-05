@@ -1,0 +1,26 @@
+{
+    "name": "rasclatt/smart-dto",
+    "type": "library",
+    "description": "Fill Dtos with data using the mapping. Also allows rendering to different array key formats.",
+    "homepage": "https://github.com/rasclatt/nubersoft",
+    "keywords": [
+        "Nubersoft",
+        "PHP",
+        "Data Transfer Object",
+        "Dto"
+    ],
+    "homepage": "https://github.com/rasclatt/smart-dto",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Rayner",
+            "email": "rasclatt@me.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+		"psr-4": {
+			"SmartDto\\": "src/"
+		}
+	}
+}
