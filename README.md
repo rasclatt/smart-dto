@@ -76,7 +76,7 @@ class Get extends SDto
     # If you create a same-named method as the parameter,
     # the Dto will then call this method post-process
     # Because it's protected, your IDE should not show it as available
-    protected id()
+    protected function id()
     {
         $this->id += 1;
     }
