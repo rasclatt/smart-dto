@@ -182,3 +182,35 @@ public int $id = 0;
 public string $description = '';
 public float $price = 0.0;
 ```
+
+## Map Two Arrays
+
+You might find you need to take one return array and force it into a new array with different keys from the original (like an adapter). This allows you to take two arrays and map the keys and values from each array:
+
+```php
+# Original array with undesirable keys
+$array = [
+    'FIRST' => 'John',
+    'LAST' => 'Doe'
+];
+
+# This is the array you want to create
+$target = [
+    'fullName' => '~FIRST~ ~LAST~',
+    'firstName' => '~FIRST~',
+    'lastName' => '~LAST~'
+];
+
+# Map the arrays
+print_r(\SmartDto\Mapper::mapster($array, $target));
+```
+
+## This would produce:
+
+```
+Array (
+    [ fullName ]  => John Doe,
+    [ firstName ] => John,
+    [ lastName ] => Doe
+)
+```
