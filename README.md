@@ -41,7 +41,7 @@ class MyClass
             'tile' => 'Tile Here!'
         ];
         # Return back your Dto
-        return Get($dataArray);
+        return new Get($dataArray);
     }
 }
 ```
@@ -133,7 +133,7 @@ class MyClass
             'my title' => 'Tile Here!'
         ];
         # Return back your Dto
-        return Get($dataArray, \SmartDto\Dto::CAMEL_CASE);
+        return new Get($dataArray, \SmartDto\Dto::CAMEL_CASE);
     }
 }
 
