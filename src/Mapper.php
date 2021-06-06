@@ -1,5 +1,5 @@
 <?php
-namespace Nubersoft\SmartDto;
+namespace SmartDto;
 
 class Mapper extends Dto
 {

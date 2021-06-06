@@ -9,7 +9,6 @@
         "Data Transfer Object",
         "Dto"
     ],
-    "homepage": "https://github.com/rasclatt/smart-dto",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +19,7 @@
     ],
     "autoload": {
 		"psr-4": {
-			"Nubersoft\\": "src/"
+			"SmartDto\\": "src/"
 		}
 	}
 }
