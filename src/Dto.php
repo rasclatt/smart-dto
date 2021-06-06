@@ -80,7 +80,9 @@ class Dto
      */
     public function toArray()
     {
-        return $this->toPropertyArray();
+    	$data = $this->toPropertyArray();
+    	ksort($data);
+    	return $data;
     }
     /**
      *	@description	
