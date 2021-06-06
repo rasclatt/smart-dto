@@ -147,7 +147,7 @@ This will then be mapped to your camel cased parameters:
 echo $MyClass->theDescription;
 ```
 
-> If you have a string such as `'thedescription'`, it will not generate camel case because there is no way to know where to break.
+> If you have a string such as `'thedescription'`, it will not generate camel case because there is no way to know where to break. You would want to use `afterConstruct()` method to generate that manually to `theDescription` or use `\SmartDto\Mapper` object to map two different arrays.
 
 # SmartDto\Mapper
 
