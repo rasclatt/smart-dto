@@ -129,7 +129,7 @@ class MyClass
         # Notice these are not formatted the same as the DTO
         $dataArray = [
             'id' => 123,
-            'my_description' => 'Some kind of example description',
+            'the_description' => 'Some kind of example description',
             'my title' => 'Tile Here!'
         ];
         # Return back your Dto
