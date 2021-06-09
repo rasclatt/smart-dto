@@ -178,4 +178,11 @@ class Dto
 
         return $new;
     }
+    /**
+     *	@description	Turns the current object into a JSON string
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray());
+    }
 }
