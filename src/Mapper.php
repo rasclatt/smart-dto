@@ -80,4 +80,11 @@ class Mapper extends Dto
         # Return compiled array
         return $final;
     }
+    /**
+     *	@description	Alias to getAttributes()
+     */
+    public function __toString()
+    {
+        return $this->getAttributes();
+    }
 }
