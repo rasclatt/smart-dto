@@ -106,6 +106,29 @@ class Dto
         return ($object)? json_decode(json_encode($data)) : $data;
     }
     /**
+     *	@description	
+     *	@param	
+     */
+    protected function recurseCase($value)
+    {
+        if(is_object($value) || is_array($value)) {
+            if($value instanceof \SmartDto\Dto)
+                $value = $value->toArray();
+            else {
+                if(is_object($value))
+                    $value  = json_decode(json_encode($value), 1);
+            }
+            $data = [];
+            foreach($value as $key => $val) {
+                $data[$this->toCase($key)] = $this->recurseCase($val);
+            }
+            return $data;
+        }
+        else {
+            return $value;
+        }
+    }
+    /**
      *	@description	Turn parameters into camel case keys
      *  @note           This ends up destroying the base object identity
      */
@@ -160,28 +183,6 @@ class Dto
     {
         $this->mapTo = $type;
         return $this;
-    }
-    /**
-     *	@description	
-     *	@param	
-     */
-    protected function recurseCase($value)
-    {
-        if(is_object($value) || is_array($value)) {
-            if($value instanceof \SmartDto\Dto)
-                $value = $value->toArray();
-            else {
-                if(is_object($value))
-                    $value  = json_decode(json_encode($value), 1);
-            }
-            foreach($value as $key => $val) {
-                $data[$this->toCase($key)] = $this->recurseCase($val);
-            }
-            return $data;
-        }
-        else {
-            return $value;
-        }
     }
     /**
      *	@description	
