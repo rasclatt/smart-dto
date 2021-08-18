@@ -101,7 +101,7 @@ class Dto
         $data = [];
         $this->mapTo = self::CAMEL_CASE;
         foreach($this->toArray() as $k => $v) {
-            $data[$this->toCase($k)] = $v;
+            $data[$this->toCase($k)] = $this->recurseCase($v);
         }
         return ($object)? json_decode(json_encode($data)) : $data;
     }
@@ -165,6 +165,28 @@ class Dto
      *	@description	
      *	@param	
      */
+    protected function recurseCase($value)
+    {
+        if(is_object($value) || is_array($value)) {
+            if($value instanceof \SmartDto\Dto)
+                $value = $value->toArray();
+            else {
+                if(is_object($value))
+                    $value  = json_decode(json_encode($value), 1);
+            }
+            foreach($value as $key => $val) {
+                $data[$this->toCase($key)] = $this->recurseCase($val);
+            }
+            return $data;
+        }
+        else {
+            return $value;
+        }
+    }
+    /**
+     *	@description	
+     *	@param	
+     */
     final function toPropertyArray()
     {
         $obj = new \ReflectionObject($this);
@@ -172,17 +194,12 @@ class Dto
         $new = [];
         if(empty($objAttr))
             return $new;
+
         foreach($objAttr as $attr) {
-            $new[$attr->getName()] = $this->{$attr->getName()};
+            if(!$attr->isStatic())
+                $new[$attr->getName()] = $this->{$attr->getName()};
         }
 
         return $new;
-    }
-    /**
-     *	@description	Turns the current object into a JSON string
-     */
-    public function __toString()
-    {
-        return json_encode($this->toArray());
     }
 }
