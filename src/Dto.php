@@ -19,6 +19,9 @@ class Dto
         $this->mapTo = $mapTo;
         # Fetch the parameters
         $Reflection = new \ReflectionObject($this);
+        # Convert to array if not an array
+        if($array instanceof \SmartDto\Dto)
+            $array = $array->toArray();
         # Process before the start of assignments
         $array = $this->beforeConstruct($array, $Reflection);
         # Assign the parameters
