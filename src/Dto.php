@@ -96,6 +96,14 @@ class Dto
         return json_decode(json_encode($this->toPropertyArray()));
     }
     /**
+     *	@description	
+     *	@param	
+     */
+    public function __toString()
+    {
+        return json_encode($this->toPropertyArray());
+    }
+    /**
      *	@description	Turn parameters into camel case keys
      *  @note           This ends up destroying the base object identity
      */
