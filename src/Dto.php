@@ -214,4 +214,12 @@ class Dto
 
         return $new;
     }
+    /**
+     *	@description	
+     *	@param	
+     */
+    public function toJson()
+    {
+        return $this->__toString();
+    }
 }
