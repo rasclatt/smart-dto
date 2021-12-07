@@ -175,6 +175,9 @@ class Dto
         foreach($Reflection->getProperties() as $ref) {
             # Get the name
             $param = $ref->getName();
+            # Convert a smartdto object to an array
+            if($array instanceof \SmartDto\Dto)
+                $array = $array->toArray();
             # See if a value is set
             if(isset($array[$ref->getName()])) {
                 $value = $array[$ref->getName()];
