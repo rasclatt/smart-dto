@@ -175,9 +175,6 @@ class Dto
         foreach($Reflection->getProperties() as $ref) {
             # Get the name
             $param = $ref->getName();
-            # Convert a smartdto object to an array
-            if($array instanceof \SmartDto\Dto)
-                $array = $array->toArray();
             # See if a value is set
             if(isset($array[$ref->getName()])) {
                 $value = $array[$ref->getName()];
@@ -199,8 +196,7 @@ class Dto
         return $this;
     }
     /**
-     *	@description	
-     *	@param	
+     *	@description	Create a recursive array to propery
      */
     final function toPropertyArray()
     {
@@ -212,17 +208,10 @@ class Dto
 
         foreach($objAttr as $attr) {
             if(!$attr->isStatic())
-                $new[$attr->getName()] = $this->{$attr->getName()};
+                if(isset($this->{$attr->getName()}))
+                    $new[$attr->getName()] = $this->{$attr->getName()};
         }
 
         return $new;
-    }
-    /**
-     *	@description	
-     *	@param	
-     */
-    public function toJson()
-    {
-        return $this->__toString();
     }
 }
