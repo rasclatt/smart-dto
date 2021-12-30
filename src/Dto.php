@@ -178,6 +178,20 @@ class Dto
             # See if a value is set
             if(isset($array[$ref->getName()])) {
                 $value = $array[$ref->getName()];
+                $type = $ref->getType();
+                if($type != null) {
+                    switch($type->getName()) {
+                        case("int"):
+                            $value = (int) $value;
+                            break;
+                        case("string"):
+                            $value = (string) $value;
+                            break;
+                        case("float"):
+                            $value = (float) $value;
+                            break;
+                    }
+                }
                 $this->{$param} = $value;
             }
             # Run any dto modifiers that may exist
