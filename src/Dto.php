@@ -16,7 +16,7 @@ class Dto
      */
     public function __construct($array = null, int $mapTo = 1)
     {
-        $this->mapTo = $mapTo;
+        $this->mapTo = (int) $mapTo;
         # Fetch the parameters
         $Reflection = new \ReflectionObject($this);
         # Convert to array if not an array
